@@ -6,7 +6,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 dynamodb_synch = boto3.resource('dynamodb', region_name='eu-central-1')
-dynamodb_asynch = await aioboto3.resource('dynamodb', region_name='eu-central-1')
+dynamodb_asynch = aioboto3.resource('dynamodb', region_name='eu-central-1')
 
 
 @app.get("/dynamodb-synch")
