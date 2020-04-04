@@ -10,10 +10,10 @@ dynamodb_asynch = await aioboto3.resource('dynamodb', region_name='eu-central-1'
 
 
 @app.get("/dynamodb-synch")
-def dynamo_get_synch(param=None):
+def dynamo_get_synch():
     table = dynamodb_synch.Table('random_uuid')
-    result = table.get_item(Key={'uuid': param or str(uuid.uuid4())})
-    return result.get('Item', 'Not found')
+    result = table.get_item(Key={'uuid': str(uuid.uuid4())})
+    return result.get('Item')
 
 
 @app.post("/dynamodb-synch")
@@ -24,10 +24,10 @@ def dynamo_post():
 
 
 @app.get("/dynamodb-asynch")
-async def dynamo_get(param=None):
+async def dynamo_get():
     table = await dynamodb_asynch.Table('random_uuid')
-    result = await table.get_item(Key={'uuid': param or str(uuid.uuid4())})
-    return result.get('Item', 'Not found')
+    result = await table.get_item(Key={'uuid': str(uuid.uuid4())})
+    return result.get('Item')
 
 
 @app.post("/dynamodb-asynch")
