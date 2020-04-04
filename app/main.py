@@ -28,5 +28,5 @@ async def asdf():
 
 
 @app.get("/")
-async def asdf():
+async def root():
     return "OK"
