@@ -25,3 +25,8 @@ async def dynamo_post():
 @app.get("/healthcheck")
 async def asdf():
     return "OK"
+
+
+@app.get("/")
+async def asdf():
+    return "OK"
