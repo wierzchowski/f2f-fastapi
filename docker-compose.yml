@@ -8,3 +8,5 @@ services:
       - .:/usr/app/
     ports:
       - 8000:8000
+    sysctls:
+      net.core.somaxconn: 1024
