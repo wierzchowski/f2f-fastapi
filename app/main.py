@@ -1,4 +1,5 @@
 import uuid
+from random import choice
 
 import aioboto3
 import boto3
@@ -7,6 +8,8 @@ from fastapi import FastAPI
 app = FastAPI()
 dynamodb_synch = boto3.resource('dynamodb', region_name='eu-central-1')
 dynamodb_asynch = aioboto3.resource('dynamodb', region_name='eu-central-1')
+
+conn_pool = [boto3.resource('dynamodb', region_name='eu-central-1') for _ in range(4)]
 
 
 @app.get("/dynamodb-synch")
@@ -32,7 +35,8 @@ async def dynamo_get():
 
 @app.post("/dynamodb-asynch")
 async def dynamo_post():
-    table = dynamodb_synch.Table('random_uuid')
+    resource = choice(conn_pool)
+    table = resource.Table('random_uuid')
     result = table.put_item(Item={'uuid': str(uuid.uuid4())})
     return result
 
