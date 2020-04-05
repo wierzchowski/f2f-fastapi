@@ -1,5 +1,5 @@
 import uuid
-from random import choice
+from random import choice, randint
 
 import aioboto3
 import boto3
@@ -48,4 +48,4 @@ def healthcheck():
 
 @app.get("/")
 async def root():
-    return "OK"
+    return randint(0, 100000)
