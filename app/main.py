@@ -35,10 +35,11 @@ async def dynamo_get():
 
 @app.post("/dynamodb-asynch")
 async def dynamo_post():
-    resource = choice(conn_pool)
-    table = resource.Table('random_uuid')
-    result = table.put_item(Item={'uuid': str(uuid.uuid4())})
-    return result
+    return
+    # resource = choice(conn_pool)
+    # table = resource.Table('random_uuid')
+    # result = table.put_item(Item={'uuid': str(uuid.uuid4())})
+    # return result
 
 
 @app.get("/healthcheck")
