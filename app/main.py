@@ -25,14 +25,14 @@ def dynamo_post():
 
 @app.get("/dynamodb-asynch")
 async def dynamo_get():
-    table = dynamodb_synch.Table('random_uuid')
+    table = dynamodb_asynch.Table('random_uuid')
     result = table.get_item(Key={'uuid': str(uuid.uuid4())})
     return result.get('Item')
 
 
 @app.post("/dynamodb-asynch")
 async def dynamo_post():
-    table = dynamodb_synch.Table('random_uuid')
+    table = dynamodb_asynch.Table('random_uuid')
     result = table.put_item(Item={'uuid': str(uuid.uuid4())})
     return result
 
