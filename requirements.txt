@@ -1,3 +1,5 @@
 aioboto3
 fastapi
 uvicorn
+sqlalchemy
+databases

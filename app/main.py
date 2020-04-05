@@ -2,7 +2,11 @@ import uuid
 from random import randint
 
 import aioboto3
+import databases
 from fastapi import FastAPI
+
+DATABASE_URL = "postgresql://fastapi-db.c8ogm3zaosex.eu-central-1.rds.amazonaws.com/fastapi_database"
+database = databases.Database(DATABASE_URL)
 
 app = FastAPI()
 
