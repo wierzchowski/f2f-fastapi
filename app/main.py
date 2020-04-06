@@ -8,7 +8,7 @@ import sqlalchemy
 from fastapi import FastAPI
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
-database = databases.Database(DATABASE_URL)
+database = databases.Database(DATABASE_URL, max_size=20)
 metadata = sqlalchemy.MetaData()
 
 uuid_table = sqlalchemy.Table(
