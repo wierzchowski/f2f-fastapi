@@ -51,7 +51,7 @@ async def rds_post():
     data = str(uuid.uuid4())
     query = uuid_table.insert().values(uuid=data)
     last_record_id = await database.execute(query)
-    return {"id": last_record_id, 'uuid': data}
+    return 'OK'
 
 
 @app.get("/healthcheck")
